@@ -12,42 +12,6 @@ public class PetStoreStep {
         URL_BASE = url;
     }
 
-    /*public void consultarMascota(String idMascota) {
-        response = RestAssured
-                .given()
-                .relaxedHTTPSValidation()
-                .baseUri(URL_BASE)
-                //.log().all()
-                .get("/pet/"+ idMascota)
-                .then()
-                .log().all()
-                .extract().response();
-    }
-    public void validacionRespuesta(int statusCode) {
-        Assert.assertEquals("Validacion de Respuesta", statusCode, response.statusCode());
-    }
-    public void validarNombreMascota(String nombreMascota) {
-        //
-    }
-    public void CrearMascota(String nombre, String idMascota) {
-        String body = "{\n" +
-                "  \"id\": " + idMascota + ",\n" +
-                "  \"name\": \"" + nombre + "\",\n" +
-                "  \"status\": \"available\"\n" +
-                "}";
-        response = RestAssured
-                .given()
-                .baseUri(URL_BASE)
-                .header("content-Type", "application/json")
-                .relaxedHTTPSValidation()
-                .body(body)
-                .log().all()
-                .post("/pet")
-                .then()
-                .extract().response();
-    }*/
-
-
     public void crearOrden(String id, String petId, String cantidad, String fecha, String status, boolean complete) {
         String body = "{\n" +
                 "  \"id\": " + id + ",\n" +
@@ -101,6 +65,5 @@ public class PetStoreStep {
         String idResponse = response.jsonPath().getString("id");
         Assert.assertEquals("Validación del ID de la orden en la consulta", idEsperado, idResponse);
     }
-
 
 }
